@@ -1,0 +1,50 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Style for CardViews -->
+    <style name="CardStyle" parent="CardView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_margin">8dp</item>
+<!--        <item name="app:cardCornerRadius">8dp</item>-->
+<!--        <item name="app:cardElevation">4dp</item>-->
+<!--        <item name="app:layout_columnWeight">1</item>-->
+    </style>
+
+    <!-- Style for the content inside CardViews -->
+    <style name="CardContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- Style for images in cards -->
+    <style name="CardImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!-- Style for titles in cards -->
+    <style name="CardTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Style for text in cards -->
+    <style name="CardText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+</resources>

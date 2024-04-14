@@ -7,35 +7,35 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-class FoodlistActivity : AppCompatActivity() {
+class LocationlistActivity : AppCompatActivity() {
 
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerview : RecyclerView
-    private lateinit var foodArrayList : ArrayList<Food>
+    private lateinit var locationArrayList : ArrayList<Location>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_foodlist)
+        setContentView(R.layout.activity_locationlist)
 
-        userRecyclerview = findViewById(R.id.foodList)
+        userRecyclerview = findViewById(R.id.locationList)
         userRecyclerview.layoutManager = LinearLayoutManager(this)
         userRecyclerview.setHasFixedSize(true)
 
-        foodArrayList = arrayListOf<Food>()
+        locationArrayList = arrayListOf<Location>()
         getUserData()
     }
 
     private fun getUserData() {
-        dbref = FirebaseDatabase.getInstance().getReference("Food")
+        dbref = FirebaseDatabase.getInstance().getReference("Location")
         dbref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     for (userSnapshot in snapshot.children){
-                        val food = userSnapshot.getValue(Food::class.java)
-                        foodArrayList.add(food!!)
+                        val location = userSnapshot.getValue(Location::class.java)
+                        locationArrayList.add(location!!)
                     }
-                    userRecyclerview.adapter = MyAdapter(foodArrayList)
+                    userRecyclerview.adapter = MyAdapter(locationArrayList)
                 }
             }
             override fun onCancelled(error: DatabaseError) {

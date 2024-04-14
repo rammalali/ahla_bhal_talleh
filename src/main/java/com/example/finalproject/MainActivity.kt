@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
             var i = Intent(this, FoodlistActivity::class.java)
             startActivity(i)
 
+//            var loc = Intent(this, ::class.java)
+//            startActivity(i)
+
             finish()
         }
     }
