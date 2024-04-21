@@ -10,12 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class MyLocationAdapter(private val locationList : ArrayList<Location>) : RecyclerView.Adapter<MyLocationAdapter.MyViewHolder>() {
+class MyHotelAdapter(private val hotelList : ArrayList<Hotel>) : RecyclerView.Adapter<MyHotelAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.location_item,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.hotel_item,
             parent,false)
         return MyViewHolder(itemView)
 
@@ -23,14 +23,14 @@ class MyLocationAdapter(private val locationList : ArrayList<Location>) : Recycl
 
     @SuppressLint("QueryPermissionsNeeded")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = locationList[position]
-        holder.location.text = currentItem.location
+        val currentItem = hotelList[position]
+        holder.hotel.text = currentItem.hotel
         holder.lat.text = currentItem.lat.toString()
         holder.lon.text = currentItem.lon.toString()
 
 
         holder.itemView.setOnClickListener {
-            val gmmIntentUri = Uri.parse("geo:${currentItem.lat},${currentItem.lon}?q=${currentItem.lat},${currentItem.lon}(${currentItem.location})")
+            val gmmIntentUri = Uri.parse("geo:${currentItem.lat},${currentItem.lon}?q=${currentItem.lat},${currentItem.lon}(${currentItem.hotel})")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")  // Specifically targeting Google Maps
 
@@ -38,7 +38,7 @@ class MyLocationAdapter(private val locationList : ArrayList<Location>) : Recycl
             if (mapIntent.resolveActivity(holder.itemView.context.packageManager) != null) {
                 holder.itemView.context.startActivity(mapIntent)
             } else {
-                // Google Maps is not installed, open location in Google Maps on web
+                // Google Maps is not installed, open hotel in Google Maps on web
                 Toast.makeText(holder.itemView.context, "Google Maps is not installed, opening in browser.", Toast.LENGTH_LONG).show()
                 val webIntentUri = Uri.parse("https://www.google.com/maps/search/?api=1&query=${currentItem.lat},${currentItem.lon}")
                 val webIntent = Intent(Intent.ACTION_VIEW, webIntentUri)
@@ -54,13 +54,13 @@ class MyLocationAdapter(private val locationList : ArrayList<Location>) : Recycl
 
     override fun getItemCount(): Int {
 
-        return locationList.size
+        return hotelList.size
     }
 
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val location : TextView = itemView.findViewById(R.id.tvlocation)
+        val hotel : TextView = itemView.findViewById(R.id.tvhotel)
         val lat : TextView = itemView.findViewById(R.id.tvlat)
         val lon : TextView = itemView.findViewById(R.id.tvlon)
 

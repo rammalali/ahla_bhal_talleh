@@ -8,24 +8,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-class LocationlistActivity : AppCompatActivity() {
+class HotellistActivity : AppCompatActivity() {
 
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerview : RecyclerView
-    private lateinit var locationArrayList : ArrayList<Location>
+    private lateinit var hotelArrayList : ArrayList<Hotel>
 
 
     private fun getUserData() {
-        dbref = FirebaseDatabase.getInstance().getReference("Locations")  // Make sure it matches your database structure
+        dbref = FirebaseDatabase.getInstance().getReference("Hotels")  // Make sure it matches your database structure
         dbref.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-                locationArrayList.clear()  // Clear existing data
+                hotelArrayList.clear()  // Clear existing data
                 if (snapshot.exists()){
                     for (userSnapshot in snapshot.children){
-                        val location = userSnapshot.getValue(Location::class.java)
-                        if (location != null) {  // Check for null to avoid crashes
-                            locationArrayList.add(location)
+                        val hotel = userSnapshot.getValue(Hotel::class.java)
+                        if (hotel != null) {  // Check for null to avoid crashes
+                            hotelArrayList.add(hotel)
                         }
                     }
                     userRecyclerview.adapter?.notifyDataSetChanged()  // Notify the adapter of data change
@@ -39,14 +39,14 @@ class LocationlistActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_locationlist)
+        setContentView(R.layout.activity_hotellist)
 
-        userRecyclerview = findViewById(R.id.locationList)
+        userRecyclerview = findViewById(R.id.hotelList)
         userRecyclerview.layoutManager = LinearLayoutManager(this)
         userRecyclerview.setHasFixedSize(true)
 
-        locationArrayList = arrayListOf<Location>()
-        userRecyclerview.adapter = MyLocationAdapter(locationArrayList)  // Set the adapter once here
+        hotelArrayList = arrayListOf<Hotel>()
+        userRecyclerview.adapter = MyHotelAdapter(hotelArrayList)  // Set the adapter once here
         getUserData()
     }
 

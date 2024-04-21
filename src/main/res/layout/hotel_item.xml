@@ -23,13 +23,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="location"
+                android:text="Hotel"
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvlocation"
+                android:id="@+id/tvhotel"
                 android:layout_width="258dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
