@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyLocationAdapter(private val locationList : ArrayList<Location>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyLocationAdapter(private val locationList : ArrayList<Location>) : RecyclerView.Adapter<MyLocationAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -22,8 +22,8 @@ class MyLocationAdapter(private val locationList : ArrayList<Location>) : Recycl
         val currentitem = locationList[position]
 
         holder.location.text = currentitem.location
-        holder.lat.text = currentitem.lat
-        holder.time.text = currentitem.time
+        holder.lat.text = currentitem.lat.toString()
+        holder.lon.text = currentitem.lon.toString()
 
     }
 
@@ -36,8 +36,8 @@ class MyLocationAdapter(private val locationList : ArrayList<Location>) : Recycl
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         val location : TextView = itemView.findViewById(R.id.tvlocation)
-        val ingrediant : TextView = itemView.findViewById(R.id.tvingrediant)
-        val time : TextView = itemView.findViewById(R.id.tvtime)
+        val lat : TextView = itemView.findViewById(R.id.tvlat)
+        val lon : TextView = itemView.findViewById(R.id.tvlon)
 
     }
 

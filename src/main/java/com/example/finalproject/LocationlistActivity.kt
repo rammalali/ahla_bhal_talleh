@@ -35,7 +35,7 @@ class LocationlistActivity : AppCompatActivity() {
                         val location = userSnapshot.getValue(Location::class.java)
                         locationArrayList.add(location!!)
                     }
-                    userRecyclerview.adapter = MyAdapter(locationArrayList)
+                    userRecyclerview.adapter = MyLocationAdapter(locationArrayList)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
